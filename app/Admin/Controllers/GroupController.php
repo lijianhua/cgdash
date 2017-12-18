@@ -2,6 +2,7 @@
 
 namespace App\Admin\Controllers;
 
+use Log;
 use App\Group;
 use Encore\Admin\Form;
 use Encore\Admin\Grid;
@@ -39,7 +40,7 @@ class GroupController extends Controller
     {
         return Admin::content(function (Content $content) use ($id) {
 
-            $content->header('header');
+            $content->header('组');
             $content->description('description');
 
             $content->body($this->form()->edit($id));
@@ -71,8 +72,14 @@ class GroupController extends Controller
             $grid->id('ID')->sortable();
 
             $grid->column('group_name', '组名');
-            $grid->column('group_ad_count', '组广告位总数');
-            $grid->column('group_led_count', '组屏幕总数');
+            $grid->adposition('组屏幕总数(广告位总数)')->display(function ($adpositions) {
+                $adCount = $ledCount = 0;
+                foreach ($adpositions as $adposition) {
+                    $adCount += $adposition['area_ad_count'];
+                    $ledCount += $adposition['area_led_count'];
+                }
+                return "<span class='label label-success'>{$ledCount}({$adCount})</span>";
+            });
             $grid->column('divident', '分红比例');
             $grid->created_at('添加时间');
             // $grid->updated_at();
@@ -89,11 +96,11 @@ class GroupController extends Controller
         return Admin::form(Group::class, function (Form $form) {
             $form->display('id', 'ID');
             $form->text('group_name', '组名')->rules('required');
-            $form->number('group_ad_count', '组广告位总数')->default(0)->rules('required');
-            $form->number('group_led_count', '组屏幕总数')->default(0)->rules('required');
-            $form->number('divident', '分红比例')->default(0)->rules('required');
-            $form->number('group_ad_surplus', '剩余广告位')->default(0)->rules('required');
-            $form->number('group_led_surplus', '剩余屏幕')->default(0)->rules('required');
+            // $form->number('group_ad_count', '组广告位总数')->default(0)->rules('required');
+            // $form->number('group_led_count', '组屏幕总数')->default(0)->rules('required');
+            $form->rate('divident', '分红比例')->default(0)->rules('required');
+            // $form->number('group_ad_surplus', '剩余广告位')->default(0)->rules('required');
+            // $form->number('group_led_surplus', '剩余屏幕')->default(0)->rules('required');
 
             $form->display('created_at', '添加时间');
             // $form->display('updated_at', 'Updated At');

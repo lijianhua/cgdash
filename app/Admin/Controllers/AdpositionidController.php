@@ -40,7 +40,7 @@ class AdpositionidController extends Controller
     {
         return Admin::content(function (Content $content) use ($id) {
 
-            $content->header('header');
+            $content->header('广告位');
             $content->description('description');
 
             $content->body($this->form()->edit($id));

@@ -41,7 +41,7 @@ class UserController extends Controller
     {
         return Admin::content(function (Content $content) use ($id) {
 
-            $content->header('header');
+            $content->header('用户');
             $content->description('description');
 
             $content->body($this->form()->edit($id));
@@ -72,8 +72,14 @@ class UserController extends Controller
 
             $grid->id('ID')->sortable();
 
-            $grid->column('name');
-            $grid->column('email');
+            $grid->column('name', '用户名');
+            // $grid->column('email');
+            $grid->column('ad_led', '广告屏幕数');
+            $grid->column('now_money', '余额');
+            $grid->column('input_money', '投入总金额');
+            $grid->column('income_money', '收益总金额');
+            // $grid->column('sold_ad', '年度已售广告位');
+            // $grid->column('unsold_ad', '年度未售广告位');
             $grid->created_at();
             $grid->updated_at();
         });

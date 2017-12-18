@@ -39,7 +39,7 @@ class RelationsController extends Controller
     {
         return Admin::content(function (Content $content) use ($id) {
 
-            $content->header('header');
+            $content->header('组内用户');
             $content->description('description');
 
             $content->body($this->form()->edit($id));
