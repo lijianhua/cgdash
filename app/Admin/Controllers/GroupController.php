@@ -22,7 +22,7 @@ class GroupController extends Controller
     {
         return Admin::content(function (Content $content) {
 
-            $content->header('header');
+            $content->header('组');
             $content->description('description');
 
             $content->body($this->grid());
@@ -92,6 +92,8 @@ class GroupController extends Controller
             $form->number('group_ad_count', '组广告位总数')->default(0)->rules('required');
             $form->number('group_led_count', '组屏幕总数')->default(0)->rules('required');
             $form->number('divident', '分红比例')->default(0)->rules('required');
+            $form->number('group_ad_surplus', '剩余广告位')->default(0)->rules('required');
+            $form->number('group_led_surplus', '剩余屏幕')->default(0)->rules('required');
 
             $form->display('created_at', '添加时间');
             // $form->display('updated_at', 'Updated At');

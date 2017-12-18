@@ -22,7 +22,7 @@ class RelationsController extends Controller
     {
         return Admin::content(function (Content $content) {
 
-            $content->header('header');
+            $content->header('组内用户');
             $content->description('description');
 
             $content->body($this->grid());
@@ -70,8 +70,8 @@ class RelationsController extends Controller
 
             $grid->id('ID')->sortable();
 
-            $grid->user('用户')->name();
-            $grid->group('组')->group_name();
+            $grid->user()->name('用户');
+            $grid->group()->group_name('组');
             $grid->column('group_with_ad', '组内广告位总数');
             $grid->column('group_with_led', '组内屏幕总数');
             $grid->created_at('添加时间');
@@ -88,8 +88,8 @@ class RelationsController extends Controller
     {
         return Admin::form(Relations::class, function (Form $form) {
             $form->display('id', 'ID');
-            $form->select('user_id', '用户')->options('/admin/getUser')->rules('required');
-            $form->select('group_id', '组名')->options('/admin/getGroup')->rules('required');
+            $form->select('user_id', '用户')->options('/dashboard/getUser')->rules('required');
+            $form->select('group_id', '组名')->options('/dashboard/getGroup')->rules('required');
             $form->number('group_with_ad', '组内广告位总数')->default(0)->rules('required');
             $form->number('group_with_led', '组内屏幕总数')->default(0)->rules('required');
 

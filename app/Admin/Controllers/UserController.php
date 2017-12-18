@@ -24,7 +24,7 @@ class UserController extends Controller
     {
         return Admin::content(function (Content $content) {
 
-            $content->header('header');
+            $content->header('用户');
             $content->description('description');
 
             $content->body($this->grid());
@@ -97,7 +97,6 @@ class UserController extends Controller
             $form->number('income_money', '收益总金额')->default(0)->rules('required');
             $form->number('sold_ad', '年度已售广告位')->default(0)->rules('required');
             $form->number('unsold_ad', '年度未售广告位')->default(0)->rules('required');
-            $form->multipleSelect('group','所属组')->options([1 => 'foo', 2 => 'bar', 'val' => 'Option name']);
 
             $form->display('created_at', 'Created At');
             $form->display('updated_at', 'Updated At');

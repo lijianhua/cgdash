@@ -23,7 +23,7 @@ class AdpositionidController extends Controller
     {
         return Admin::content(function (Content $content) {
 
-            $content->header('header');
+            $content->header('广告位');
             $content->description('description');
 
             $content->body($this->grid());
@@ -71,7 +71,7 @@ class AdpositionidController extends Controller
 
             $grid->id('ID')->sortable();
 
-            $grid->column('group_id', '所属组');
+            $grid->group()->group_name('所属组');
             $grid->column('province', '省');
             $grid->column('city', '市');
             $grid->column('area', '地区');
@@ -91,7 +91,7 @@ class AdpositionidController extends Controller
     {
         return Admin::form(Adpositionid::class, function (Form $form) {
             $form->display('id', 'ID');
-            $form->select('group_id', '所属组')->options('/admin/getGroup')->rules('required');
+            $form->select('group_id', '所属组')->options('/dashboard/getGroup')->rules('required');
             $form->text('province', '省')->rules('required');
             $form->text('city', '市')->rules('required');
             $form->text('area', '地区')->rules('required');

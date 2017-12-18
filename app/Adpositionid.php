@@ -24,4 +24,9 @@ class Adpositionid extends Authenticatable
         'group_id', 'province', 'city', 'area', 'address', 'area_led_count', 'area_ad_count'
     ];
 
+    public function group()
+    {
+        return $this->belongsTo(Group::class);
+    }
+
 }

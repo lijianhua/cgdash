@@ -35,4 +35,9 @@ class Group extends Authenticatable
         return $this->hasMany(Relations::class);
     }
 
+    public function adposition()
+    {
+        return $this->hasMany(Adpositionid::class);
+    }
+
 }
