@@ -18,21 +18,20 @@ class HomeController extends Controller
             $content->header('后台');
             $content->description('欢迎登陆超广广告系统后台');
 
-            // $content->row(Dashboard::title());
 
             // $content->row(function (Row $row) {
             //
-            //     // $row->column(4, function (Column $column) {
-            //     //     $column->append(Dashboard::environment());
-            //     // });
-            //     //
-            //     // $row->column(4, function (Column $column) {
-            //     //     $column->append(Dashboard::extensions());
-            //     // });
-            //     //
-            //     // $row->column(4, function (Column $column) {
-            //     //     $column->append(Dashboard::dependencies());
-            //     // });
+            //     $row->column(4, function (Column $column) {
+            //         $column->append(Dashboard::environment());
+            //     });
+            //
+            //     $row->column(4, function (Column $column) {
+            //         $column->append(Dashboard::extensions());
+            //     });
+            //
+            //     $row->column(4, function (Column $column) {
+            //         $column->append(Dashboard::dependencies());
+            //     });
             // });
         });
     }

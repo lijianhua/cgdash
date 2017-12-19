@@ -80,6 +80,14 @@ class GroupController extends Controller
                 }
                 return "<span class='label label-success'>{$ledCount}({$adCount})</span>";
             });
+            $grid->groupRelation('使用屏幕数(使用广告位数)')->display(function ($relations) {
+                $adCount = $ledCount = 0;
+                foreach ($relations as $relation) {
+                    $adCount += $relation['group_with_ad'];
+                    $ledCount += $relation['group_with_led'];
+                }
+                return "<span class='label label-success'>{$ledCount}({$adCount})</span>";
+            });
             $grid->column('divident', '分红比例');
             $grid->created_at('添加时间');
             // $grid->updated_at();

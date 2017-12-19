@@ -74,7 +74,13 @@ class UserController extends Controller
 
             $grid->column('name', '用户名');
             // $grid->column('email');
-            $grid->column('ad_led', '广告屏幕数');
+            $grid->userRelation('广告屏幕数')->display(function ($relations) {
+                $ledCount = 0;
+                foreach ($relations as $relation) {
+                    $ledCount += $relation['group_with_led'];
+                }
+                return "<span class='label label-success'>{$ledCount}</span>";
+            });
             $grid->column('now_money', '余额');
             $grid->column('input_money', '投入总金额');
             $grid->column('income_money', '收益总金额');
@@ -98,9 +104,9 @@ class UserController extends Controller
             $form->email('email', '邮箱')->rules('required');
             $form->password('password', '密码')->default('123456');
             $form->number('ad_led', '广告屏幕数')->default(0)->rules('required');
-            $form->number('now_money', '余额')->default(0)->rules('required');
-            $form->number('input_money', '投入总金额')->default(0)->rules('required');
-            $form->number('income_money', '收益总金额')->default(0)->rules('required');
+            $form->currency('now_money', '余额')->symbol('￥')->rules('required');
+            $form->currency('input_money', '投入总金额')->symbol('￥')->rules('required');
+            $form->currency('income_money', '收益总金额')->symbol('￥')->rules('required');
             $form->number('sold_ad', '年度已售广告位')->default(0)->rules('required');
             $form->number('unsold_ad', '年度未售广告位')->default(0)->rules('required');
 

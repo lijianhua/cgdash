@@ -90,7 +90,7 @@ class RelationsController extends Controller
             $form->display('id', 'ID');
             $form->select('user_id', '用户')->options('/dashboard/getUser')->rules('required');
             $form->select('group_id', '组名')->options('/dashboard/getGroup')->rules('required');
-            $form->number('group_with_ad', '组内广告位总数')->default(0)->rules('required');
+            $form->number('group_with_ad', '组内广告位总数')->default(0)->rules('required|max:100');
             $form->number('group_with_led', '组内屏幕总数')->default(0)->rules('required');
 
             $form->display('created_at', '添加时间');
