@@ -15,4 +15,10 @@ class UserController extends Controller
         return $user;
     }
 
+    public function shop(Request $request)
+    {
+        $user = session('wechat.oauth_user'); // 拿到授权用户资料
+        return '欢迎'.$user->nickname.'进入超广商城';
+    }
+
 }

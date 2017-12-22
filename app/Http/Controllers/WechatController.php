@@ -29,15 +29,14 @@ class WechatController extends Controller
         return $this->app->server->serve();
     }
 
-    public function shop()
+    public function menu()
     {
-
-        return '欢迎进入商城';
+        $this->app->menu->delete(); 
         $buttons = [
             [
                 "type" => "view",
                 "name" => "超广广告商城",
-                'url' => 'http://lcshangw.com/shop'
+                'url' => 'http://www.vbxlub.net/shop'
             ],
         ];
         $this->app->menu->create($buttons);
