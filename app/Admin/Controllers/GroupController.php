@@ -88,7 +88,7 @@ class GroupController extends Controller
                 }
                 return "<span class='label label-success'>{$ledCount}({$adCount})</span>";
             });
-            $grid->column('divident', '分红比例');
+            $grid->column('divident', '分红金额');
             $grid->created_at('添加时间');
             // $grid->updated_at();
         });
@@ -106,7 +106,7 @@ class GroupController extends Controller
             $form->text('group_name', '组名')->rules('required');
             // $form->number('group_ad_count', '组广告位总数')->default(0)->rules('required');
             // $form->number('group_led_count', '组屏幕总数')->default(0)->rules('required');
-            $form->rate('divident', '分红比例')->default(0)->rules('required');
+            $form->number('divident', '分红金额')->default(0)->rules('required');
             // $form->number('group_ad_surplus', '剩余广告位')->default(0)->rules('required');
             // $form->number('group_led_surplus', '剩余屏幕')->default(0)->rules('required');
 

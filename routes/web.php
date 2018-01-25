@@ -16,11 +16,13 @@ Route::get('/', function () {
 });
 Route::any('/wechat', 'WechatController@serve');
 Route::get('/menu', 'WechatController@menu');
+Route::get('/located', 'UserController@located');
 Route::group(['middleware' => ['web', 'wechat.oauth']], function () {
     Route::get('/user', function () {
         $user = session('wechat.oauth_user'); // 拿到授权用户资料
         return '欢迎'.$user->nickname;
     });
     Route::get('/shop', 'UserController@shop');
+    Route::post('/joined', 'UserController@joined');
 
 });

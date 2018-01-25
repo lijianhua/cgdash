@@ -5,7 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title>超广商城</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
@@ -78,9 +78,9 @@
             @endif
 
             <div class="content">
-                <div class="title m-b-md">
-                    欢迎关注超广广告商城
-                </div>
+                <div class="center-block">
+                    {{$message}}
+                <div>
             </div>
         </div>
     </body>

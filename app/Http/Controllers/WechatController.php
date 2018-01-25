@@ -35,8 +35,8 @@ class WechatController extends Controller
         $buttons = [
             [
                 "type" => "view",
-                "name" => "超广广告商城",
-                'url' => 'http://www.vbxlub.net/shop'
+                "name" => "加入超广广告商城",
+                'url' => 'http://www.vbxlub.net/located'
             ],
         ];
         $this->app->menu->create($buttons);
