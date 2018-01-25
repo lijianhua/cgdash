@@ -35,7 +35,7 @@ class WechatController extends Controller
         $buttons = [
             [
                 "type" => "view",
-                "name" => "加入超广广告商城",
+                "name" => "合伙人审核",
                 'url' => 'http://www.vbxlub.net/located'
             ],
         ];

@@ -26,12 +26,12 @@ class UserController extends Controller
     public function located(Request $request)
     {
         $user = session('wechat.oauth_user'); // 拿到授权用户资料
-        $auditArr = [0=> '审核中', 1 => '审核通过'];
+        $auditArr = [0 => '抱歉，正在审核中或审核失败，请联系超广客服了解详情', 1 => '审核已通过  恭喜您正式成为超广合伙人'];
         $info = User::where('openid', '=', $user->id)->first();
         if ($info && $info['userName']) {
             $info = $info->toArray();
             $audit = $auditArr[$info['audit']];
-            return view('welcome', ['message' =>'您的信息目前'.$audit]);
+            return view('welcome', ['message' => $audit]);
         }
         return view('located');
     }
@@ -59,7 +59,7 @@ class UserController extends Controller
         $info = ['name' => $user->nickname, 'openid' => (string)$user->id, 'email' => '', 'password' => '123456', 'audit' => 0];
         $data = array_merge($data, $info);
         $result = User::updateOrCreate(['openid' => $user->id], $data);
-        return view("welcome", ['message' => '欢迎加入,请等待审核']);
+        return view("welcome", ['message' => '管理员审核中 请耐心等待']);
     }
 
 }
